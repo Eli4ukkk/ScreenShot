@@ -2,7 +2,6 @@
 #define SCREENWIDGET_H
 
 #include <QWidget>
-#include <QPainter>
 #include <QPixmap>
 #include <QMouseEvent>
 #include <QPoint>
@@ -20,7 +19,7 @@ signals:
 
 protected:
     void paintEvent(QPaintEvent *event);
-    
+
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);

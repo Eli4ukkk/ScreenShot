@@ -56,17 +56,6 @@ void Widget::saveToFile()
     if (!pixmap.isNull())
     {
         QString path = QFileDialog::getSaveFileName(this, "保存图片", ".", "Images (*.png *.jpg)");
-        // 方法 1:
-        // bool success = pixmap.save(path);
-        // if(success){
-        //     pixmap.save(path);
-        //     QMessageBox::information(this, "成功", "成功保存！");
-        // }
-        // else{
-        //     QMessageBox::warning(this, "失败", "截图保存失败！");
-        //     return;
-        // }
-        // 方法 2：
         if (path.length() > 0)
         {
             pixmap.save(path);
@@ -85,30 +74,5 @@ void Widget::saveToFile()
     }
 }
 //LESSON_9 SHOWMASK
-void Widget::showMask(){
-    
-    // A.屏窗口
-    // 1.创建临时窗口
-    QLabel *mask = new QLabel();
-    // 2.无边框 + 置顶
-    mask->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
-    // 3.设置为全屏大小
-    mask->setGeometry(QGuiApplication::primaryScreen()->geometry());
-    
-    // B.让背景变暗
-    // 1.复制一份原图作为画布
-    QPixmap darkPixmap = pixmap;
-    // 2.创建painter处理图片
-    QPainter painter(&darkPixmap);   
-    painter.fillRect(darkPixmap.rect(), QColor(0,0,0,100));// 范围：整张图的大小 (0,0 到 宽,高) 颜色为黑色 透明度为100(0-255) QColor(R,G,B,透明度)
-    painter.end(); // 保存修改
-    // 3.显示图像和窗口
-    mask->setPixmap(darkPixmap);
-    mask->show();
-    // 4.防止卡死 清理内存 再把主窗口显示
-    QTimer::singleShot(3000, [mask,this]()->void{
-        mask->close();
-        delete mask;
-        this->show();
-    });
-}
+//在LESSON_10中删除 彻底被取代了
+// void Widget::showMask(){}

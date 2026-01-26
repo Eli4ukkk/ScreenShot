@@ -2,6 +2,7 @@
 #include <QMessageBox>
 #include <QGuiApplication>
 #include <QScreen>
+#include <QPainter>
 
 ScreenWidget::ScreenWidget(QWidget *parent) : QWidget(parent)
 {
@@ -38,7 +39,10 @@ void ScreenWidget::mouseReleaseEvent(QMouseEvent *event){
         // 【核心修复 1】计算缩放比例
         // 比例 = 图片真实宽度 / 窗口当前宽度
         // 例如：图片2560 / 窗口1706 ≈ 1.5
-        double scaleW = (double)fullScreen.width() / this->width();
+        // this (窗口)：这是用来展示图片的载体/容器。
+        // 由于 Qt 的高分屏缩放机制，操作系统告诉 Qt：“这个屏幕只有 1706 x 1066 这么大”。
+        // 所以 this->width() 是 1706，this->height() 是 1066。
+        double scaleW = (double)fullScreen.width() / this->width(); 
         double scaleH = (double)fullScreen.height() / this->height();
 
         // 获取鼠标选中的逻辑区域
@@ -97,7 +101,7 @@ void ScreenWidget::paintEvent(QPaintEvent *event){
 
         // 这里的 drawPixmap(target, pixmap, source)
         // 意思是：在窗口的 rect 区域，画 fullScreen 图片的 sourceRect 部分
-        painter.drawPixmap(rect, fullScreen, sourceRect);
+        painter.drawPixmap(rect, fullScreen, sourceRect); //因为本身就是在this上取的（逻辑图），所以两个点不用乘比例了
 
         // 画蓝色边框
         painter.setPen(QPen(Qt::blue, 2)); // 线宽设为2更清晰
