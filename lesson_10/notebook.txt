@@ -1,0 +1,49 @@
+LESSON_10要点：
+这节课
+写了ScreenWidget.h/ScreenWidget.cpp
+改了Widget.cpp让他用以上写的类
+<1> Qt鼠标事件的真相:
+“操作系统传给 Qt 一个系统消息，
+Qt 的事件循环识别了这个消息，
+把它包装成一个C++对象，
+然后把这个对象的**地址（指针）**作为参数，
+调用了这个函数。”
+<2> 在任意屏幕能够获取正确截图的办法
+QRect(int x, int y, int width, int height) 矩形的四个参数
+// 比例 = 图片真实宽度 / 窗口当前宽度
+double scaleW = (double)fullScreen.width() / this->width(); 
+double scaleH = (double)fullScreen.height() / this->height();
+QRect logicalRect = QRect(startPoint, endPoint).normalized();
+QRect physicalRect(
+    logicalRect.x() * scaleW,
+    logicalRect.y() * scaleH,
+    logicalRect.width() * scaleW,
+    logicalRect.height() * scaleH
+);
+<3>
+// 创建截图窗口 nullptr表示无父窗口 不然hide会连子窗口一起隐藏
+ScreenWidget *screenWidget = new ScreenWidget(nullptr); 
+<4>
+connect它把投手和捕手连在了一起
+connect(screenWidget, &ScreenWidget::screenShotTaken, this, [this](QPixmap screen){})
+
+--------------------------------------------------------
+
+其他:
+normalized()：
+它可以处理“反向拖拽”。
+比如你从右下角往左上角画，width 可能会变成负数，
+normalized() 会自动帮你把坐标修正为标准的“左上角+宽高”格式。
+
+QPixmap selectedPixmap = fullScreen.copy(physicalRect);
+copy:复制的区域
+
+painter.drawPixmap(rect, fullScreen, sourceRect);
+// 意思是：在窗口的 rect 区域，画 fullScreen 图片的 sourceRect 部分
+
+问题&答案:
+1:Q_UNUSED(event)是做什么的? 除去没用到的参数*event的警告
+2:Q_OBJECT是做什么的? 让我们可以调用信号槽
+3:paintEvent什么意思?什么时候被调用的? 虚函数. 每次这个类的【外观】需要更新的时候
+4:获取的startpoint/endpoint是原图还是逻辑图里的点? 逻辑图（窗口坐标系） 鼠标事件永远是相对于当前窗口 (this) 的左上角计算的
+5:rect是不是仅仅是一个矩形边框? 是“数据”，它变成“边框”还是“填充区域”取决于你用画笔怎么画它。
