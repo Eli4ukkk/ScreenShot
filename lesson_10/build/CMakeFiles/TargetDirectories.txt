@@ -1,0 +1,5 @@
+F:/Code/ScreenShot/lesson_10/build/CMakeFiles/learn_qt_class.dir
+F:/Code/ScreenShot/lesson_10/build/CMakeFiles/edit_cache.dir
+F:/Code/ScreenShot/lesson_10/build/CMakeFiles/rebuild_cache.dir
+F:/Code/ScreenShot/lesson_10/build/CMakeFiles/learn_qt_class_autogen_timestamp_deps.dir
+F:/Code/ScreenShot/lesson_10/build/CMakeFiles/learn_qt_class_autogen.dir

@@ -1,0 +1,26 @@
+[
+{
+  "directory": "F:/Code/ScreenShot/lesson_10/build",
+  "command": "E:\\qt\\Tools\\mingw1310_64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/learn_qt_class.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\learn_qt_class.dir\\learn_qt_class_autogen\\mocs_compilation.cpp.obj -c F:\\Code\\ScreenShot\\lesson_10\\build\\learn_qt_class_autogen\\mocs_compilation.cpp",
+  "file": "F:/Code/ScreenShot/lesson_10/build/learn_qt_class_autogen/mocs_compilation.cpp",
+  "output": "CMakeFiles/learn_qt_class.dir/learn_qt_class_autogen/mocs_compilation.cpp.obj"
+},
+{
+  "directory": "F:/Code/ScreenShot/lesson_10/build",
+  "command": "E:\\qt\\Tools\\mingw1310_64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/learn_qt_class.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\learn_qt_class.dir\\ScreenWidget.cpp.obj -c F:\\Code\\ScreenShot\\lesson_10\\ScreenWidget.cpp",
+  "file": "F:/Code/ScreenShot/lesson_10/ScreenWidget.cpp",
+  "output": "CMakeFiles/learn_qt_class.dir/ScreenWidget.cpp.obj"
+},
+{
+  "directory": "F:/Code/ScreenShot/lesson_10/build",
+  "command": "E:\\qt\\Tools\\mingw1310_64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/learn_qt_class.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\learn_qt_class.dir\\main.cpp.obj -c F:\\Code\\ScreenShot\\lesson_10\\main.cpp",
+  "file": "F:/Code/ScreenShot/lesson_10/main.cpp",
+  "output": "CMakeFiles/learn_qt_class.dir/main.cpp.obj"
+},
+{
+  "directory": "F:/Code/ScreenShot/lesson_10/build",
+  "command": "E:\\qt\\Tools\\mingw1310_64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/learn_qt_class.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\learn_qt_class.dir\\Widget.cpp.obj -c F:\\Code\\ScreenShot\\lesson_10\\Widget.cpp",
+  "file": "F:/Code/ScreenShot/lesson_10/Widget.cpp",
+  "output": "CMakeFiles/learn_qt_class.dir/Widget.cpp.obj"
+}
+]

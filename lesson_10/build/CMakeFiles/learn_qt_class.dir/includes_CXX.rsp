@@ -1,0 +1,1 @@
+-IF:/Code/ScreenShot/lesson_10/build/learn_qt_class_autogen/include -isystem E:/qt/6.10.1/mingw_64/include/QtWidgets -isystem E:/qt/6.10.1/mingw_64/include -isystem E:/qt/6.10.1/mingw_64/include/QtCore -isystem "E:/qt/6.10.1/mingw_64/mkspecs/win32-g++" -isystem E:/qt/6.10.1/mingw_64/include/QtGui
