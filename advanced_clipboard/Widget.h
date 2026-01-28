@@ -20,15 +20,13 @@ Q_OBJECT
 public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
-signals:
-    void ShotTaken_1(QPixmap selectRegion);
 private:
     QLabel *fullscreenLabel;
     QPushButton *btn_newCapture;
     QPushButton *btn_Save;
     QPushButton *btn_copy;
     QPixmap fullscreen;
-    ShotWidget *shotWidget;
+    QPixmap resultRegion;
     
     void function_Save();
     void function_newCpature();

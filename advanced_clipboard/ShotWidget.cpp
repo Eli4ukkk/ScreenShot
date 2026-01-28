@@ -2,7 +2,7 @@
 
 ShotWidget::ShotWidget(QWidget *parent) : QWidget(parent)
 {
-    this->isDrawing = true;
+    this->isDrawing = false;
     this->update();
 }
 ShotWidget::~ShotWidget(){};
@@ -13,6 +13,7 @@ void ShotWidget::getfullscreen(QPixmap fullscreen)
 }
 void ShotWidget::mousePressEvent(QMouseEvent *event)
 {
+    isDrawing = true;
     if(event->button() == Qt::LeftButton){
         this->startPoint = event->pos();
         this->update();

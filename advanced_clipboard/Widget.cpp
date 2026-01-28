@@ -8,8 +8,6 @@ Widget::Widget(QWidget *parent) : QWidget(parent)
     btn_newCapture = new QPushButton("newCapture(截图)", this);
     btn_Save = new QPushButton("Save(保存)", this);
     btn_copy = new QPushButton("Copy to Clipboard(复制到剪贴板)", this);
-    shotWidget = new ShotWidget(nullptr);
-    shotWidget->setAttribute(Qt::WA_DeleteOnClose);
     // fullscreen = new QPixmap(); q1:为什么fullscreen不用new?
     layout->addWidget(fullscreenLabel); // addWidget()
     layout->addWidget(btn_newCapture);
@@ -30,11 +28,12 @@ void Widget::function_newCpature()
         if (screen == nullptr)
             return;
         fullscreen = screen->grabWindow(0);
-        
+        ShotWidget *shotWidget = new ShotWidget(nullptr);
+        shotWidget->setAttribute(Qt::WA_DeleteOnClose);
         shotWidget->getfullscreen(fullscreen);
         shotWidget->showFullScreen();
-        connect(shotWidget, &ShotWidget::ShotTaken, [this](QPixmap selectRegion) -> void{
-            emit ShotTaken_1(selectRegion);
+        connect(shotWidget, &ShotWidget::ShotTaken, [this, shotWidget](QPixmap selectRegion) -> void{
+            resultRegion = selectRegion;
             fullscreenLabel->setPixmap(selectRegion.scaled(fullscreenLabel->size(),Qt::KeepAspectRatio,Qt::SmoothTransformation));
             shotWidget->close();
             this->show();
@@ -42,12 +41,12 @@ void Widget::function_newCpature()
 }
 void Widget::function_Save()
 {
-    if (!fullscreen.isNull())
+    if (!resultRegion.isNull())
     {
         QString path = QFileDialog::getSaveFileName(this, "保存图片", ".");
         if (path.length() > 0)
         {
-            fullscreen.save(path);
+            resultRegion.save(path);
             QMessageBox::information(this, "Information", "保存成功");
         }
         else
@@ -64,10 +63,6 @@ void Widget::function_Save()
 }
 void Widget::saveToClipboard()
 {
-    connect(this, &Widget::ShotTaken_1, [this](QPixmap selectRegion) -> void{
-        QClipboard *clipboard = QGuiApplication::clipboard();
-        clipboard->setPixmap(selectRegion);
-        shotWidget->close();
-        this->show();
-    });
+    QClipboard *clipboard = QGuiApplication::clipboard();
+    clipboard->setPixmap(resultRegion);
 }
